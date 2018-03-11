@@ -25,7 +25,12 @@ const StackNavigatorConfig = {
 
 const RouteConfigs = {
   Launch: {screen: LaunchPage},
-  Main: {screen: MainPage}
+  Main: {
+    screen: MainPage,
+    navigationOptions: {
+        	headerTitle: 'Start'
+    }
+  }
  }
 
 export {RouteConfigs,StackNavigatorConfig}

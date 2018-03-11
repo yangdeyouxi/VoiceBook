@@ -43,7 +43,7 @@ export default class LaunchPage extends Component {
       if (this.state.lastTime <= 0) {
         clearInterval(this.cutDown);
         //然后还需要跳转新页面
-
+        this.props.navigation.navigate('Main');
       }
     }, 1000);
   }
@@ -60,9 +60,9 @@ export default class LaunchPage extends Component {
           }}
         />
         <View style={styles.cutTimeBg}
-         // onPress={() => this.props.navigation.navigate('Main')}
         >
           <Text style={styles.cutTimeContent}
+          onPress={() => this.props.navigation.navigate('Main')}
             // onPress{() => console('onPress')}
           >{time}</Text>
         </View>

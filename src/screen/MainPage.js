@@ -10,7 +10,8 @@ import {
   StyleSheet,
   View,
   Text,
-  Image
+  Image,
+  Button
 } from 'react-native';
 import styles from './../../res/style/styles';
 
