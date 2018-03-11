@@ -12,6 +12,10 @@ import {
   Text,
   Image
 } from 'react-native';
+// import MainPage from './MainPage';
+import styles from './../../res/style/styles';
+// import {StackNavigator} from 'react-navigation';
+// import MainPage from './MainPage';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -38,6 +42,8 @@ export default class LaunchPage extends Component {
       });
       if (this.state.lastTime <= 0) {
         clearInterval(this.cutDown);
+        //然后还需要跳转新页面
+
       }
     }, 1000);
   }
@@ -46,40 +52,22 @@ export default class LaunchPage extends Component {
     let time = this.state.lastTime;
     return (
       <View style={styles.container}>
-
         <Image
-          source={require('../img/launcher.png')}
+          source={require('./../../res/img/launcher.png')}
           style={{
-            width:400,
+            width:450,
             height:700
           }}
         />
-        <View style={styles.cutTimeBg}>
-          <Image source={require('../img/back.png')} style={{width:30,height:30}}/>
-          <Text style={styles.cutTimeContent}>{time}</Text>
+        <View style={styles.cutTimeBg}
+         // onPress={() => this.props.navigation.navigate('Main')}
+        >
+          <Text style={styles.cutTimeContent}
+            // onPress{() => console('onPress')}
+          >{time}</Text>
         </View>
       </View>
 
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5FCFF',
-  },
-  cutTimeBg:{
-    position:'absolute',
-    width:30,
-    height:30,
-    top:40,
-    right:20,
-    alignItems:'center',
-    alignSelf:'flex-end',
-    justifyContent:'center'
-  },
-  cutTimeContent:{
-    position:'absolute'
-  }
-});

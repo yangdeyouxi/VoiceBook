@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './component/LaunchPage';
+import App from './App';
 
 AppRegistry.registerComponent('VoiceBook', () => App);
