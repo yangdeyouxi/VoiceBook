@@ -30,7 +30,7 @@ const RouteConfigs = {
   Main: {
     screen: MainPage,
     navigationOptions: {
-            headerTitle: '语期',
+          headerTitle: '语期',
           title: '标题2',
           headerTitleStyle: {fontSize: 18, color: '#666666',textAlign: 'center',alignSelf:'center'},
     }

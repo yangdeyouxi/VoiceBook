@@ -4,18 +4,18 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
-  Platform,
-  StyleSheet,
   View,
   Text,
   Image
 } from 'react-native';
 // import MainPage from './MainPage';
 import styles from './../../res/style/styles';
-// import {StackNavigator} from 'react-navigation';
-// import MainPage from './MainPage';
+import textStyles from './../../res/style/textstyle';
+import Resolution from "../util/Resolution";
+import { NavigationActions } from 'react-navigation';
+
 
 
 export default class LaunchPage extends Component {
@@ -35,33 +35,49 @@ export default class LaunchPage extends Component {
         return { lastTime: previousState.lastTime-1 };
       });
       if (this.state.lastTime <= 0) {
-        clearInterval(this.cutDown);
-        //然后还需要跳转新页面
-        this.props.navigation.navigate('Main');
+          this.jumpMain();
       }
     }, 1000);
   }
 
   render() {
     let time = this.state.lastTime;
-    return (
-      <View style={styles.container}>
-        <Image
-          source={require('./../../res/img/launcher.png')}
-          style={{
-            width:450,
-            height:700
-          }}
-        />
-        <View style={styles.cutTimeBg}
-        >
-          <Text style={styles.cutTimeContent}
-          onPress={() => this.props.navigation.navigate('Main')}
-            // onPress{() => console('onPress')}
-          >{time}</Text>
-        </View>
-      </View>
 
+    return (
+        <Resolution.FixWidthView style={styles.container}>
+          <Image
+            source={require('./../../res/img/launcher.png')}
+            style={{
+              width:1080,
+              height:1920
+            }}
+          />
+          <View style={styles.cutTimeBg}
+          >
+            <Text style={textStyles.textTipNormal}
+            onPress={() => this.jumpMain()}
+              // onPress{() => console('onPress')}
+            >{time}</Text>
+          </View>
+        </Resolution.FixWidthView>
     );
   }
+
+  jumpMain(){
+      clearInterval(this.cutDown);
+      this.setState(() => {
+          return { lastTime: 0 };
+      });
+      this.props.navigation.dispatch(resetAction);//跳转并清除路由记录
+      // this.props.navigation.navigate('Main');
+
+  }
+
 }
+
+const  resetAction = NavigationActions.reset({
+    index: 0,
+    actions: [
+        NavigationActions.navigate({routeName:'Main'})//要跳转到的页面名字
+    ]
+});

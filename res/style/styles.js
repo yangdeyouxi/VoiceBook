@@ -10,23 +10,16 @@ const styles = StyleSheet.create({
   },
   cutTimeBg:{
     position:'absolute',
-    width:30,
-    height:30,
-    top:20,
-    right:20,
+    width:100,
+    height:100,
+    top:50,
+    right:50,
     alignItems:'center',
     alignSelf:'flex-end',
     justifyContent:'center',
-    borderRadius:16,
+    borderRadius:50,
     backgroundColor:'#ffffff'
-  },
-  cutTimeContent:{
-    position:'absolute',
-  },
-  // mainBg{
-  //   backgroundColor:'#ff0066',
-  //   flex:1
-  // }
+  }
 });
 
 export {styles as default}
